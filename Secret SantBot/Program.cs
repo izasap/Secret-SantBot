@@ -242,164 +242,31 @@ namespace Secret_SantBot
 
                     if (count > 0)
                     {
-                        string description = $"1️⃣ - {File.ReadAllText($@"NewsTitle\{count}.txt")}";
-                        File.WriteAllText(@"News\news1.txt", File.ReadAllText($@"News\{count}.txt"));
-                        File.WriteAllText(@"NewsTitle\news1.txt", File.ReadAllText($@"NewsTitle\{count}.txt"));
+                        string description = "";
 
-                        File.WriteAllText(@"News\news2.txt", "");
-                        File.WriteAllText(@"NewsTitle\news2.txt", "");
+                        var mc = new ComponentBuilder();
+                        var ns = new ButtonBuilder();
 
-                        File.WriteAllText(@"News\news3.txt", "");
-                        File.WriteAllText(@"NewsTitle\news3.txt", "");
-
-                        File.WriteAllText(@"News\news4.txt", "");
-                        File.WriteAllText(@"NewsTitle\news4.txt", "");
-
-                        File.WriteAllText(@"News\news5.txt", "");
-                        File.WriteAllText(@"NewsTitle\news5.txt", "");
-
-                        File.WriteAllText(@"News\news6.txt", "");
-                        File.WriteAllText(@"NewsTitle\news6.txt", "");
-
-                        File.WriteAllText(@"News\news7.txt", "");
-                        File.WriteAllText(@"NewsTitle\news7.txt", "");
-
-                        File.WriteAllText(@"News\news8.txt", "");
-                        File.WriteAllText(@"NewsTitle\news8.txt", "");
-
-                        File.WriteAllText(@"News\news9.txt", "");
-                        File.WriteAllText(@"NewsTitle\news9.txt", "");
-
-                        File.WriteAllText(@"News\news10.txt", "");
-                        File.WriteAllText(@"NewsTitle\news10.txt", "");
-
-                        var firstnews = new ButtonBuilder()
-                            .WithCustomId("news1")
-                            .WithStyle(ButtonStyle.Primary)
-                            .WithEmote(Emoji.Parse("1️⃣"));
-
-                        var secondnews = new ButtonBuilder()
-                            .WithCustomId("news2")
-                            .WithStyle(ButtonStyle.Primary)
-                            .WithEmote(Emoji.Parse("2️⃣"));
-
-                        var thridnews = new ButtonBuilder()
-                            .WithCustomId("news3")
-                            .WithStyle(ButtonStyle.Primary)
-                            .WithEmote(Emoji.Parse("3️⃣"));
-
-                        var fourthnews = new ButtonBuilder()
-                            .WithCustomId("news4")
-                            .WithStyle(ButtonStyle.Primary)
-                            .WithEmote(Emoji.Parse("4️⃣"));
-
-                        var fivthnews = new ButtonBuilder()
-                            .WithCustomId("news5")
-                            .WithStyle(ButtonStyle.Primary)
-                            .WithEmote(Emoji.Parse("5️⃣"));
-
-                        var sixthnews = new ButtonBuilder()
-                            .WithCustomId("news6")
-                            .WithStyle(ButtonStyle.Primary)
-                            .WithEmote(Emoji.Parse("6️⃣"));
-
-                        var seventhnews = new ButtonBuilder()
-                            .WithCustomId("news7")
-                            .WithStyle(ButtonStyle.Primary)
-                            .WithEmote(Emoji.Parse("7️⃣"));
-
-                        var eigрthnews = new ButtonBuilder()
-                            .WithCustomId("news8")
-                            .WithStyle(ButtonStyle.Primary)
-                            .WithEmote(Emoji.Parse("8️⃣"));
-
-                        var ninthnews = new ButtonBuilder()
-                            .WithCustomId("news9")
-                            .WithStyle(ButtonStyle.Primary)
-                            .WithEmote(Emoji.Parse("9️⃣"));
-
-                        var tenthnews = new ButtonBuilder()
-                            .WithCustomId("news10")
-                            .WithStyle(ButtonStyle.Primary)
-                            .WithEmote(Emoji.Parse("🔟"));
-
-                        var mc = new ComponentBuilder()
-                            .WithButton(firstnews);
-
-                        if (count > 1)
+                        for (int i = count; i > 0; i--)
                         {
-                            description += $"\n2️⃣ - {File.ReadAllText($@"NewsTitle\{count - 1}.txt")}";
-                            File.WriteAllText(@"News\news2.txt", File.ReadAllText($@"News\{count - 1}.txt"));
-                            File.WriteAllText(@"NewsTitle\news2.txt", File.ReadAllText($@"NewsTitle\{count - 1}.txt"));
-                            mc.WithButton(secondnews);
-                        }
+                            string label = File.ReadAllText($@"NewsTitle\news{i}.txt");
 
-                        if (count > 2)
-                        {
-                            description += $"\n3️⃣ - {File.ReadAllText($@"NewsTitle\{count - 2}.txt")}";
-                            File.WriteAllText(@"News\news3.txt", File.ReadAllText($@"News\{count - 2}.txt"));
-                            File.WriteAllText(@"NewsTitle\news3.txt", File.ReadAllText($@"NewsTitle\{count - 2}.txt"));
-                            mc.WithButton(thridnews);
-                        }
+                            if (label != "")
+                            {
+                                description += $"\n{File.ReadAllText($@"NewsTitle\{i}.txt")}";
+                                File.WriteAllText($@"News\news{i}.txt", File.ReadAllText($@"News\{i}.txt"));
+                                File.WriteAllText($@"NewsTitle\news{i}.txt", File.ReadAllText($@"NewsTitle\{i}.txt"));
 
-                        if (count > 3)
-                        {
-                            description += $"\n4️⃣ - {File.ReadAllText($@"NewsTitle\{count - 3}.txt")}";
-                            File.WriteAllText(@"News\news4.txt", File.ReadAllText($@"News\{count - 3}.txt"));
-                            File.WriteAllText(@"NewsTitle\news4.txt", File.ReadAllText($@"NewsTitle\{count - 3}.txt"));
-                            mc.WithButton(fourthnews);
-                        }
+                                ns.WithCustomId($"news{i}")
+                                    .WithStyle(ButtonStyle.Primary)
+                                    .WithLabel(label);
 
-                        if (count > 4)
-                        {
-                            description += $"\n5️⃣ - {File.ReadAllText($@"NewsTitle\{count - 4}.txt")}";
-                            File.WriteAllText(@"News\news5.txt", File.ReadAllText($@"News\{count - 4}.txt"));
-                            File.WriteAllText(@"NewsTitle\news5.txt", File.ReadAllText($@"NewsTitle\{count - 4}.txt"));
-                            mc.WithButton(fivthnews);
-                        }
-
-                        if (count > 5)
-                        {
-                            description += $"\n6⃣ - {File.ReadAllText($@"NewsTitle\{count - 5}.txt")}";
-                            File.WriteAllText(@"News\news6.txt", File.ReadAllText($@"News\{count - 5}.txt"));
-                            File.WriteAllText(@"NewsTitle\news6.txt", File.ReadAllText($@"NewsTitle\{count - 5}.txt"));
-                            mc.WithButton(sixthnews);
-                        }
-
-                        if (count > 6)
-                        {
-                            description += $"\n7⃣ - {File.ReadAllText($@"NewsTitle\{count - 6}.txt")}";
-                            File.WriteAllText(@"News\news7.txt", File.ReadAllText($@"News\{count - 6}.txt"));
-                            File.WriteAllText(@"NewsTitle\news7.txt", File.ReadAllText($@"NewsTitle\{count - 6}.txt"));
-                            mc.WithButton(seventhnews);
-                        }
-
-                        if (count > 7)
-                        {
-                            description += $"\n8⃣ - {File.ReadAllText($@"NewsTitle\{count - 7}.txt")}";
-                            File.WriteAllText(@"News\news8.txt", File.ReadAllText($@"News\{count - 7}.txt"));
-                            File.WriteAllText(@"NewsTitle\news8.txt", File.ReadAllText($@"NewsTitle\{count - 7}.txt"));
-                            mc.WithButton(eigрthnews);
-                        }
-
-                        if (count > 8)
-                        {
-                            description += $"\n9⃣ - {File.ReadAllText($@"NewsTitle\{count - 8}.txt")}";
-                            File.WriteAllText(@"News\news9.txt", File.ReadAllText($@"News\{count - 8}.txt"));
-                            File.WriteAllText(@"NewsTitle\news9.txt", File.ReadAllText($@"NewsTitle\{count - 8}.txt"));
-                            mc.WithButton(ninthnews);
-                        }
-
-                        if (count > 9)
-                        {
-                            description += $"\n🔟 - {File.ReadAllText($@"NewsTitle\{count - 9}.txt")}";
-                            File.WriteAllText(@"News\news10.txt", File.ReadAllText($@"News\{count - 9}.txt"));
-                            File.WriteAllText(@"NewsTitle\news10.txt", File.ReadAllText($@"NewsTitle\{count - 9}.txt"));
-                            mc.WithButton(tenthnews);
+                                mc.WithButton(ns);
+                            }
                         }
 
                         var news = new EmbedBuilder()
-                            .WithTitle("**Почтовый ящик**")
+                            .WithTitle("")
                             .WithDescription(description)
                             .WithColor(new(45, 186, 193));
 
