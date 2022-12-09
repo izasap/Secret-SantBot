@@ -153,12 +153,6 @@ namespace Secret_SantBot
 
                     if (registered)
                     {
-                        bool owner = false;
-
-                        foreach (SocketRole role in roles)
-                            if (role.Id == this.owner)
-                                owner = true;
-
                         var mail = new ButtonBuilder()
                             .WithLabel("Проверить почтовый ящик")
                             .WithCustomId("mail")
@@ -188,8 +182,10 @@ namespace Secret_SantBot
                             .WithDescription("Здесь проходит мероприятие 'Тайный санта', надеюсь на тебя!")
                             .WithColor(new(45, 186, 193));
 
-                        if (owner)
-                            mc.WithButton(settings);
+
+                        foreach (SocketRole role in roles)
+                            if (role.Id == this.owner)
+                                mc.WithButton(settings);
 
                         mc.WithButton(info);
 
